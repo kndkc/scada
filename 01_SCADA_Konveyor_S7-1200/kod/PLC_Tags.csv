@@ -1,0 +1,8 @@
+Name;Path;Data Type;Logical Address;Comment
+HMI_Sol;Default tag table;Bool;%M10.0;HMI sol butonu
+HMI_Stop;Default tag table;Bool;%M10.1;HMI stop butonu
+HMI_Sag;Default tag table;Bool;%M10.2;HMI sag butonu
+AcilStop;Default tag table;Bool;%I0.0;Acil stop (NC)
+Motor_Sol;Default tag table;Bool;%Q0.0;Konveyor sol yon kontaktoru
+Motor_Sag;Default tag table;Bool;%Q0.1;Konveyor sag yon kontaktoru
+UrunX;Default tag table;Int;%MW20;HMI urun (sise) X konumu

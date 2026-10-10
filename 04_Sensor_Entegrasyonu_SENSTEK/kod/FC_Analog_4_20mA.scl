@@ -1,0 +1,34 @@
+// ============================================================================
+// FC_Analog_4_20mA - S7-1200/1500 analog giriş ölçekleme
+// Siemens ham değer: 4 mA = 0, 20 mA = 27648
+// NAMUR NE43: < 3.8 mA veya > 20.5 mA -> sensör / kablo hatası
+// ============================================================================
+FUNCTION "FC_Analog_4_20mA" : Real
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT
+      Ham     : Int;     // %IW64 vb.
+      MuhMin  : Real;    // 4 mA'deki değer  (ör. 0.0 m)
+      MuhMax  : Real;    // 20 mA'deki değer (ör. 5.0 m)
+   END_VAR
+   VAR_OUTPUT
+      mA      : Real;    // Hesaplanan akım
+      Hata    : Bool;    // NAMUR hata bayrağı
+   END_VAR
+   VAR_TEMP
+      oran    : Real;
+   END_VAR
+
+BEGIN
+   #oran := INT_TO_REAL(#Ham) / 27648.0;          // 0.0 .. 1.0
+   #mA   := 4.0 + #oran * 16.0;
+
+   #Hata := (#mA < 3.8) OR (#mA > 20.5);
+
+   IF #Hata THEN
+      #FC_Analog_4_20mA := #MuhMin;                // Güvenli değer
+   ELSE
+      // SCALE_X/NORM_X yerine açık formül: y = y1 + oran * (y2 - y1)
+      #FC_Analog_4_20mA := #MuhMin + LIMIT(MN := 0.0, IN := #oran, MX := 1.0) * (#MuhMax - #MuhMin);
+   END_IF;
+END_FUNCTION

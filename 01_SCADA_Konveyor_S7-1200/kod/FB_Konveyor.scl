@@ -1,0 +1,63 @@
+// ============================================================================
+// FB_Konveyor  -  Çift yönlü konveyör kontrolü (S7-1200, TIA Portal)
+// HMI butonları: Sol / Stop / Sag  ->  motor yön çıkışları + ürün konumu
+// ============================================================================
+FUNCTION_BLOCK "FB_Konveyor"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT
+      HMI_Sol   : Bool;          // HMI "sol" butonu (anlık)
+      HMI_Sag   : Bool;          // HMI "sag" butonu (anlık)
+      HMI_Stop  : Bool;          // HMI "stop" butonu (anlık)
+      AcilStop  : Bool := TRUE;  // NC kontak: TRUE = normal
+      KonumMin  : Int := 0;      // Sol istasyon konumu (HMI piksel)
+      KonumMax  : Int := 520;    // Sağ istasyon konumu (HMI piksel)
+      Hiz       : Int := 4;      // Her çevrimde ürün kayma miktarı
+   END_VAR
+
+   VAR_OUTPUT
+      Motor_Sol : Bool;          // %Q0.0 -> sol yön kontaktörü
+      Motor_Sag : Bool;          // %Q0.1 -> sağ yön kontaktörü
+      UrunX     : Int;           // HMI'daki şişenin X konumu
+   END_VAR
+
+   VAR
+      sSol      : Bool;
+      sSag      : Bool;
+      tPuls     : TON_TIME;      // Animasyon / konum güncelleme saati
+   END_VAR
+
+BEGIN
+   // --- Stop veya acil stop her şeyden önceliklidir ------------------------
+   IF #HMI_Stop OR NOT #AcilStop THEN
+      #sSol := FALSE;
+      #sSag := FALSE;
+   // --- Yön seçimi + karşılıklı kilitleme ---------------------------------
+   ELSIF #HMI_Sol AND NOT #sSag THEN
+      #sSol := TRUE;
+   ELSIF #HMI_Sag AND NOT #sSol THEN
+      #sSag := TRUE;
+   END_IF;
+
+   // --- Ürün konumu: 50 ms'de bir güncellenir -----------------------------
+   #tPuls(IN := NOT #tPuls.Q, PT := T#50ms);
+   IF #tPuls.Q THEN
+      IF #sSol THEN
+         #UrunX := #UrunX - #Hiz;
+      ELSIF #sSag THEN
+         #UrunX := #UrunX + #Hiz;
+      END_IF;
+   END_IF;
+
+   // --- Uç noktada otomatik dur -------------------------------------------
+   IF #UrunX <= #KonumMin THEN
+      #UrunX := #KonumMin;
+      #sSol := FALSE;
+   ELSIF #UrunX >= #KonumMax THEN
+      #UrunX := #KonumMax;
+      #sSag := FALSE;
+   END_IF;
+
+   #Motor_Sol := #sSol;
+   #Motor_Sag := #sSag;
+END_FUNCTION_BLOCK

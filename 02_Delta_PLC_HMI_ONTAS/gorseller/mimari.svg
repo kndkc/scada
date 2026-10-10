@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="760" height="300" fill="#f7f9fc"/>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#445"/></marker></defs>
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#223">Delta PLC Makine Kontrol Mimarisi</text>
+  <rect x="300" y="60" width="160" height="70" rx="8" fill="#1f6feb"/><text x="380" y="90" text-anchor="middle" fill="#fff" font-weight="bold">Delta PLC</text><text x="380" y="110" text-anchor="middle" fill="#dbe8ff">ISPSoft (LAD / ST)</text>
+  <rect x="560" y="60" width="170" height="70" rx="8" fill="#2da44e"/><text x="645" y="90" text-anchor="middle" fill="#fff" font-weight="bold">Delta HMI</text><text x="645" y="110" text-anchor="middle" fill="#e2f6e8">DIAScreen</text>
+  <line x1="460" y1="95" x2="556" y2="95" stroke="#445" stroke-width="2" marker-end="url(#a)"/><line x1="558" y1="105" x2="464" y2="105" stroke="#445" stroke-width="2" marker-end="url(#a)"/>
+  <text x="510" y="88" text-anchor="middle" font-size="11" fill="#445">Modbus / Ethernet</text>
+  <rect x="30" y="190" width="170" height="80" rx="8" fill="#fff" stroke="#8a94a6"/><text x="115" y="215" text-anchor="middle" font-weight="bold" fill="#223">Analog Girişler</text><text x="115" y="235" text-anchor="middle" fill="#556">4-20 mA / 0-10 V</text><text x="115" y="253" text-anchor="middle" fill="#556">basınç, sıcaklık, mesafe</text>
+  <rect x="230" y="190" width="140" height="80" rx="8" fill="#fff" stroke="#8a94a6"/><text x="300" y="215" text-anchor="middle" font-weight="bold" fill="#223">Dijital Girişler</text><text x="300" y="235" text-anchor="middle" fill="#556">endüktif, manyetik</text><text x="300" y="253" text-anchor="middle" fill="#556">buton, limit switch</text>
+  <rect x="400" y="190" width="150" height="80" rx="8" fill="#fff" stroke="#8a94a6"/><text x="475" y="215" text-anchor="middle" font-weight="bold" fill="#223">Çıkışlar</text><text x="475" y="235" text-anchor="middle" fill="#556">valf, kontaktör</text><text x="475" y="253" text-anchor="middle" fill="#556">sürücü (VFD)</text>
+  <rect x="580" y="190" width="150" height="80" rx="8" fill="#fff" stroke="#8a94a6"/><text x="655" y="215" text-anchor="middle" font-weight="bold" fill="#223">EPLAN P8</text><text x="655" y="235" text-anchor="middle" fill="#556">elektrik projesi</text><text x="655" y="253" text-anchor="middle" fill="#556">pano + kablolama</text>
+  <line x1="115" y1="190" x2="330" y2="134" stroke="#445" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="300" y1="190" x2="360" y2="134" stroke="#445" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="420" y1="134" x2="470" y2="186" stroke="#445" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="655" y1="190" x2="460" y2="128" stroke="#8a94a6" stroke-width="1.5" stroke-dasharray="5,4"/>
+</svg>

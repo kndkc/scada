@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="420" viewBox="0 0 700 420" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="700" height="420" fill="#f7f9fc"/>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c4302b"/></marker></defs>
+  <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#223">Kartezyen Robot: İzometrik Şema</text>
+  <!-- şase: izometrik kutu (X=150, Y=100, Z=50) -->
+  <g stroke="#64748b" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M110,330 L470,330 L610,250 L250,250 Z"/>
+    <path d="M110,330 L110,230 M470,330 L470,230 M610,250 L610,150 M250,250 L250,150"/>
+    <path d="M110,230 L470,230 M250,150 L610,150"/>
+  </g>
+  <!-- Y köprüsü -->
+  <path d="M290,230 L430,150" stroke="#1f6feb" stroke-width="10" stroke-linecap="round"/>
+  <!-- Z ekseni arabası -->
+  <rect x="345" y="160" width="26" height="70" rx="3" fill="#f59e0b" stroke="#b45309"/>
+  <line x1="358" y1="230" x2="358" y2="268" stroke="#334155" stroke-width="4"/>
+  <circle cx="358" cy="272" r="6" fill="#c4302b"/>
+  <!-- eksen okları -->
+  <g stroke="#c4302b" stroke-width="2.5" marker-end="url(#a)">
+    <line x1="80" y1="380" x2="200" y2="380"/><line x1="80" y1="380" x2="140" y2="346"/><line x1="80" y1="380" x2="80" y2="320"/>
+  </g>
+  <g fill="#c4302b" font-weight="bold"><text x="206" y="385">X</text><text x="144" y="342">Y</text><text x="74" y="314">Z</text></g>
+  <g fill="#223">
+    <text x="290" y="355">X: 1500 mm (kayış, 2 motor)</text>
+    <text x="560" y="300">Y: 1000 mm (kayış)</text>
+    <text x="385" y="200">Z: 500 mm (mil)</text>
+    <text x="440" y="140" fill="#1f6feb">Y köprüsü</text>
+  </g>
+  <g font-size="12" fill="#556"><text x="20" y="60">■ Sigma profil şase</text><text x="20" y="78" fill="#1f6feb">■ Hareketli köprü</text><text x="20" y="96" fill="#b45309">■ Z arabası + takım</text></g>
+</svg>
